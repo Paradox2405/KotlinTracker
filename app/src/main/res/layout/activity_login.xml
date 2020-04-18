@@ -7,28 +7,59 @@
     android:background="@android:color/holo_green_dark" >
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/email_edittext_login"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/background_light"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_edittext_register_login"
         android:ems="10"
         android:hint="Email"
+        android:paddingLeft="16sp"
         android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="93dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="73dp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password_edittext_login"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/background_light"
+        android:background="@drawable/rounded_edittext_register_login"
         android:ems="10"
         android:hint="Password"
+        android:paddingLeft="16sp"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintStart_toStartOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="@+id/email_edittext_login"
+        app:layout_constraintStart_toStartOf="@+id/email_edittext_login"
         tools:layout_editor_absoluteY="161dp" />
+
+    <Button
+        android:id="@+id/login_button_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button"
+        android:text="Login"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/password_edittext_login"
+        app:layout_constraintStart_toStartOf="@+id/password_edittext_login"
+        tools:layout_editor_absoluteY="230dp" />
+
+    <EditText
+        android:id="@+id/back_to_register_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Back to registration"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/login_button_login"
+        app:layout_constraintStart_toStartOf="@+id/login_button_login"
+        tools:layout_editor_absoluteY="298dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

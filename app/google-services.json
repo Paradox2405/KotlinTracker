@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "343904389305",
+    "firebase_url": "https://kotlintracker-664d9.firebaseio.com",
+    "project_id": "kotlintracker-664d9",
+    "storage_bucket": "kotlintracker-664d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343904389305:android:5c472a6d78795ce3627368",
+        "android_client_info": {
+          "package_name": "com.example.kotlintracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343904389305-taht8nfpgo31o11irjlqd6f6r1vn5hoq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoChayGqrHcO5IqPMJjIet47Eu1CGWA0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343904389305-taht8nfpgo31o11irjlqd6f6r1vn5hoq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
