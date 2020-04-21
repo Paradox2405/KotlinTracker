@@ -112,7 +112,7 @@ class RegisterActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 Log.d("RegisterActivity","Saved User to FB database")
                 //below line takes you directly to home without going to previous screen
-                val intent = Intent(this, LatestMesagesActivity::class.java)
+                val intent = Intent(this, LatestMessagesActivity::class.java)
                 intent.flags=Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
 
@@ -121,4 +121,6 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 }
-class User(val uid: String,val username: String, val profileImageUrl: String)
+class User(val uid: String,val username: String, val profileImageUrl: String){
+    constructor(): this("","","")
+}

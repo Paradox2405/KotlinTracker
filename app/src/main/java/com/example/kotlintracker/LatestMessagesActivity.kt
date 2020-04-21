@@ -7,7 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 
-class LatestMesagesActivity : AppCompatActivity() {
+class LatestMessagesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +27,8 @@ class LatestMesagesActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item?.itemId){
             R.id.menu_new_message ->{
+                val intent = Intent(this, NewMessageActivity::class.java)
+                startActivity(intent)
 
             }R.id.menu_sign_out ->{
             FirebaseAuth.getInstance().signOut()
