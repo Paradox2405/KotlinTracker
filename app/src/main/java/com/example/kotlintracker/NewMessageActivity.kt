@@ -1,5 +1,6 @@
 package com.example.kotlintracker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -47,6 +48,13 @@ class NewMessageActivity : AppCompatActivity() {
                     val user=it.getValue(User::class.java)
                     if (user != null) {
                         adapter.add(UserItem(user))
+                    }
+                    adapter.setOnItemClickListener { item, view ->
+
+                        val intent = Intent(view.context, ChatLogActivity::class.java)
+                        startActivity(intent)
+
+                        finish()
                     }
                     recyclerview_newmessage.adapter=adapter
                 }
