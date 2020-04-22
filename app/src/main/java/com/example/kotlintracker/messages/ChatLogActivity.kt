@@ -1,22 +1,24 @@
-package com.example.kotlintracker
+package com.example.kotlintracker.messages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.kotlintracker.R
+import com.example.kotlintracker.models.User
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.activity_chat_log.*
-import kotlinx.android.synthetic.main.activity_new_message.*
 
 class ChatLogActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_log)
-        supportActionBar?.title="Chat Log"
+        //supportActionBar?.title="Chat Log"
 
-        val username=intent.getStringExtra(NewMessageActivity.USER_KEY)
-        supportActionBar?.title=username
+        val user = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
+        //val username=intent.getStringExtra(NewMessageActivity.USER_KEY)
+        supportActionBar?.title=user.username
 
 
         val adapter = GroupAdapter<GroupieViewHolder>()

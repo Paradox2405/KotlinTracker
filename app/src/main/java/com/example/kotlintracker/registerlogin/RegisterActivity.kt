@@ -1,4 +1,4 @@
-package com.example.kotlintracker
+package com.example.kotlintracker.registerlogin
 
 import android.app.Activity
 import android.content.Intent
@@ -8,6 +8,9 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import com.example.kotlintracker.R
+import com.example.kotlintracker.messages.LatestMessagesActivity
+import com.example.kotlintracker.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -107,7 +110,8 @@ class RegisterActivity : AppCompatActivity() {
         val uid = FirebaseAuth.getInstance().uid?:""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
 
-        val user = User(uid, username_edittext_registration.text.toString(),profileImageUrl)
+        val user = User(uid,username_edittext_registration.text.toString(),profileImageUrl)
+
         ref.setValue(user)
             .addOnSuccessListener {
                 Log.d("RegisterActivity","Saved User to FB database")
@@ -119,8 +123,6 @@ class RegisterActivity : AppCompatActivity() {
             }
 
 
+
     }
-}
-class User(val uid: String,val username: String, val profileImageUrl: String){
-    constructor(): this("","","")
 }
