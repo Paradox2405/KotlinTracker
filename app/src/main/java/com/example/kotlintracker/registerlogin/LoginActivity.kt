@@ -1,9 +1,11 @@
 package com.example.kotlintracker.registerlogin
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlintracker.R
+import com.example.kotlintracker.messages.LatestMessagesActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -23,6 +25,10 @@ class LoginActivity : AppCompatActivity(){
                     if (!it.isSuccessful) return@addOnCompleteListener
                     //else if sucessful
                     Log.d("Main","Sucessfully Logged IN")
+
+                    val intent = Intent(this, LatestMessagesActivity::class.java)
+
+                    startActivity(intent)
                 }
                 .addOnFailureListener {
                     Log.d("Main","Failed to Login: ${it.message}")
@@ -30,6 +36,7 @@ class LoginActivity : AppCompatActivity(){
         }
         back_to_register_textview.setOnClickListener {
             finish()
+
         }
 
 
