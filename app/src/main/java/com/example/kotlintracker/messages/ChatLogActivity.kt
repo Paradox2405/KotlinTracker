@@ -77,6 +77,7 @@ class ChatLogActivity : AppCompatActivity() {
                     }
 
                 }
+                recyclerview_chat_log.scrollToPosition(adapter.itemCount -1)
 
             }
 
