@@ -1,33 +1,37 @@
 package com.example.kotlintracker.messages
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.kotlintracker.R
 import com.example.kotlintracker.models.ChatMessage
 import com.example.kotlintracker.models.User
 import com.example.kotlintracker.registerlogin.RegisterActivity
+import com.example.kotlintracker.scanning.BarcodeScan
 import com.example.kotlintracker.views.LatestMessageRow
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.squareup.picasso.Picasso
+import com.google.zxing.integration.android.IntentIntegrator
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
-import com.xwray.groupie.Item
-import kotlinx.android.synthetic.main.activity_chat_log.*
 import kotlinx.android.synthetic.main.activity_latest_mesages.*
-import kotlinx.android.synthetic.main.latest_message_row.view.*
+
 
 class LatestMessagesActivity : AppCompatActivity() {
 
     companion object{
         var currentUser: User?=null
         val TAG="Latest Messages"
+
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +58,27 @@ class LatestMessagesActivity : AppCompatActivity() {
         fetchCurrentUser()
 
        verifyUserIsLoggedin()
+
+        button_scan_latest_messages.setOnClickListener {
+            val intent=Intent(this, BarcodeScan::class.java )
+            startActivity(intent)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+            val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+            if (result != null) {
+                if (result.contents == null) {
+                    Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
+                }
+            } else {
+                super.onActivityResult(requestCode, resultCode, data)
+            }
+
+
     }
 
 
@@ -154,4 +179,6 @@ class LatestMessagesActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.nav_menu,menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+
 }
