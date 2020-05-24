@@ -21,6 +21,7 @@ import com.google.zxing.integration.android.IntentIntegrator
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_latest_mesages.*
+import kotlinx.android.synthetic.main.activity_new_message.*
 
 
 class LatestMessagesActivity : AppCompatActivity() {
@@ -59,10 +60,7 @@ class LatestMessagesActivity : AppCompatActivity() {
 
        verifyUserIsLoggedin()
 
-        button_scan_latest_messages.setOnClickListener {
-            val intent=Intent(this, BarcodeScan::class.java )
-            startActivity(intent)
-        }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

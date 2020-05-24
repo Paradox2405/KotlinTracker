@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.budiyev.android.codescanner.CodeScanner
 import com.example.kotlintracker.R
 import com.example.kotlintracker.models.User
+import com.example.kotlintracker.scanning.BarcodeScan
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -32,6 +34,12 @@ class NewMessageActivity : AppCompatActivity() {
         //recyclerview_newmessage.adapter=adapter
 
         fetchUsers()
+
+        button_scan_latest_messages.setOnClickListener {
+            val intent=Intent(this, BarcodeScan::class.java )
+            startActivity(intent)
+
+        }
 
     }
     companion object{
@@ -62,6 +70,10 @@ class NewMessageActivity : AppCompatActivity() {
                         finish()
                     }
 
+
+
+
+
                     recyclerview_newmessage.adapter=adapter
                 }
                 }
@@ -88,4 +100,5 @@ class UserItem(val user: User): Item <GroupieViewHolder>() {
 override fun getLayout(): Int {
     return R.layout.user_row_new_message
 }
+
 }

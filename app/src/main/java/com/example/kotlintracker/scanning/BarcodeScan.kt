@@ -1,9 +1,11 @@
 package com.example.kotlintracker.scanning
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -13,7 +15,19 @@ import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.example.kotlintracker.R
+import com.example.kotlintracker.messages.ChatLogActivity
+import com.example.kotlintracker.messages.NewMessageActivity
+import com.example.kotlintracker.messages.UserItem
+import com.example.kotlintracker.models.User
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.activity_barcode_scan.*
+import kotlinx.android.synthetic.main.activity_new_message.*
 
 
 class BarcodeScan : AppCompatActivity() {
@@ -34,14 +48,20 @@ class BarcodeScan : AppCompatActivity() {
         codeScanner.isFlashEnabled=false
 
         codeScanner.decodeCallback= DecodeCallback {
+
+
+
             runOnUiThread {
+
                 Toast.makeText(this,"scan result: ${it.text}",Toast.LENGTH_LONG).show()
             }
         }
 
         codeScanner.errorCallback= ErrorCallback {
             runOnUiThread {
-                Toast.makeText(this, "Camera error: ${it.message}",Toast.LENGTH_LONG).show()
+
+
+                Toast.makeText(this, "Scan Error: ${it.message}",Toast.LENGTH_LONG).show()
             }
         }
         checkpermission()
@@ -76,4 +96,5 @@ class BarcodeScan : AppCompatActivity() {
         codeScanner.releaseResources()
         super.onPause()
     }
+
 }
